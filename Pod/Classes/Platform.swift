@@ -33,11 +33,11 @@
     
     extension UIImage {
         public func pngRepresentation() -> Data? {
-            return UIImagePNGRepresentation(self)
+            return self.pngData()
         }
         
         public func jpgRepresentation(quality: CGFloat) -> Data? {
-            return UIImageJPEGRepresentation(self, quality)
+            return self.jpegData(compressionQuality: quality)
         }
     }
 #endif

@@ -33,7 +33,7 @@ extension RendererDrawable {
    - parameter attributesBlock: Any additional attributes can be configured using this configuration block
    */
   public func stroke(rect: CGRect, color: Color? = nil, attributes attributesBlock: AttributesBlock? = nil) {
-    cgContext.draw(inRect: rect, attributes: attributesBlock) { (context, rect, attributes) in
+    CGContext.current?.draw(inRect: rect, attributes: attributesBlock) { (context, rect, attributes) in
       
       if let color = color {
         context.setStrokeColor(color.cgColor)
@@ -65,7 +65,7 @@ extension RendererDrawable {
    - parameter attributesBlock: Any additional attributes can be configured using this configuration block
    */
   public func stroke(path: BezierPath, color: Color, attributes attributesBlock: AttributesBlock? = nil) {
-    cgContext.draw(inRect: path.bounds, attributes: attributesBlock) { (context, rect, attributes) in
+    CGContext.current?.draw(inRect: path.bounds, attributes: attributesBlock) { (context, rect, attributes) in
       context.addPath(path.cgPath)
       context.strokePath()
     }
@@ -112,7 +112,7 @@ extension RendererDrawable {
   public func strokeLine(from startPoint: CGPoint, to endPoint: CGPoint, color: Color? = nil, attributes attributesBlock: AttributesBlock? = nil) {
     let rect = CGRect.reversible(from: startPoint, to: endPoint)
     
-    cgContext.draw(inRect: rect, attributes: attributesBlock) { (context, rect, attributes) in
+    CGContext.current?.draw(inRect: rect, attributes: attributesBlock) { (context, rect, attributes) in
       if let color = color {
         context.setStrokeColor(color.cgColor)
       }
