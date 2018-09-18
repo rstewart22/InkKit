@@ -57,7 +57,7 @@ extension RendererDrawable {
   }
   
   private func addInnerShadow(_ path: BezierPath, color: Color, radius: CGFloat, offset: CGSize) {
-    cgContext.draw(inRect: path.bounds, attributes: nil) { (context, rect, attributes) in
+    CGContext.current?.draw(inRect: path.bounds, attributes: nil) { (context, rect, attributes) in
       context.addPath(path.cgPath)
       
       if !context.isPathEmpty {
@@ -78,7 +78,7 @@ extension RendererDrawable {
   }
   
   private func addOuterShadow(_ path: BezierPath, color: Color, radius: CGFloat, offset: CGSize) {
-    cgContext.draw(inRect: path.bounds, attributes: nil) { (context, rect, attributes) in
+    CGContext.current?.draw(inRect: path.bounds, attributes: nil) { (context, rect, attributes) in
       context.beginTransparencyLayer(auxiliaryInfo: nil)
       context.setShadow(offset: offset, blur: radius, color: color.cgColor)
       context.addPath(path.cgPath)

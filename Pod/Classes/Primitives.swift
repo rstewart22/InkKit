@@ -28,7 +28,7 @@ extension RendererDrawable {
   // MARK: Internal functions
   
   internal func drawGradientPath(_ path: BezierPath, startColor: Color, endColor: Color, angleInDegrees: CGFloat, stroke: Bool, attributes attributesBlock: AttributesBlock? = nil) {
-    cgContext.draw(inRect: path.bounds, attributes: attributesBlock, drawing: { (context, rect, attributes) in
+    CGContext.current?.draw(inRect: path.bounds, attributes: attributesBlock, drawing: { (context, rect, attributes) in
       context.addPath(path.cgPath)
       
       if stroke {

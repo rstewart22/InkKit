@@ -57,7 +57,7 @@ extension RendererDrawable {
   }
   
   private func addInnerBorder(_ path: BezierPath, color: Color? = nil, thickness: CGFloat? = nil, attributes attributesBlock: AttributesBlock? = nil) {
-    cgContext.draw(inRect: path.bounds, attributes: attributesBlock) { (context, rect, attributes) in
+    CGContext.current?.draw(inRect: path.bounds, attributes: attributesBlock) { (context, rect, attributes) in
       context.setLineWidth((thickness ?? attributes.lineWidth) * 2)
 
       if let color = color {
@@ -76,7 +76,7 @@ extension RendererDrawable {
   }
   
   private func addOuterBorder(_ path: BezierPath, color: Color? = nil, thickness: CGFloat? = nil, attributes attributesBlock: AttributesBlock? = nil) {
-    cgContext.draw(inRect: path.bounds, attributes: attributesBlock) { (context, rect, attributes) in
+    CGContext.current?.draw(inRect: path.bounds, attributes: attributesBlock) { (context, rect, attributes) in
       context.setLineWidth((thickness ?? attributes.lineWidth) * 2)
       
       if let color = color {
@@ -96,7 +96,7 @@ extension RendererDrawable {
   }
   
   private func addCenterBorder(_ path: BezierPath, color: Color? = nil, thickness: CGFloat? = nil,  attributes attributesBlock: AttributesBlock? = nil) {
-    cgContext.draw(inRect: path.bounds, attributes: attributesBlock) { (context, rect, attributes) in
+    CGContext.current?.draw(inRect: path.bounds, attributes: attributesBlock) { (context, rect, attributes) in
       context.setLineWidth(thickness ?? attributes.lineWidth)
       
       if let color = color {
