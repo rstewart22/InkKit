@@ -125,7 +125,7 @@ extension CGPath {
    
    - parameter enumerator: The enumeration handler
    */
-  public func forEach(_ enumerator: @convention(block) (CGPathElement) -> Void) {
+  public func forEach(_ enumerator: @escaping @convention(block) (CGPathElement) -> Void) {
     typealias ElementEnumeration = @convention(block) (CGPathElement) -> Void
     
     func callback(_ info: UnsafeMutableRawPointer?, element: UnsafePointer<CGPathElement>) {
