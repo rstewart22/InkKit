@@ -52,7 +52,7 @@ extension String {
   public func sizeWith(attributes: [NSAttributedStringKey : Any]?, constrainedTo size: CGSize? = nil) -> CGSize {
     if let size = size {
       if #available(OSX 10.11, *) {
-        return NSAttributedString(string: self, attributes: attributes as! [String : Any]).boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil).size
+        return NSAttributedString(string: self, attributes: attributes).boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil).size
       }
     }
     
@@ -66,7 +66,7 @@ extension String {
    - parameter attributes: The attributes for this string
    */
   public func draw(at point: CGPoint, withAttributes attributes: [NSAttributedStringKey : Any]?) {
-    (self as NSString).draw(at: point, withAttributes: attributes as! [String : Any])
+    (self as NSString).draw(at: point, withAttributes: attributes)
   }
   
   /**
@@ -76,7 +76,7 @@ extension String {
    - parameter attributes: The attributes for this string
    */
   public func draw(in rect: CGRect, withAttributes attributes: [NSAttributedStringKey : Any]?) {
-    (self as NSString).draw(in: rect, withAttributes: attributes as! [String : Any])
+    (self as NSString).draw(in: rect, withAttributes: attributes)
   }
 
 }
